@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mb-3 d-flex justify-content-center">
+        <a href="{% url 'homepage' %}" class="btn btn-primary mx-2">Home</a>
+    </div>
+    <div class="container-fluid">
+        <h1 style="text-align:center;color: darkcyan;">Patients List</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr style="color: brown;">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in patients %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.age }}</td>
+                    <td>{{ i.gender }}</td>
+                    <td>{{ i.contact }}</td>
+                    <td>{{ i.address }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

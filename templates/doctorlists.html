@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mb-3 d-flex justify-content-center">
+        <a href="{% url 'homepage' %}" class="btn btn-primary mx-2">Home</a>
+    </div>
+    <div class="container-fluid">
+        <h1 style="text-align: center; color: coral;">Doctors List</h1>
+        <table class=" table table-bordered">
+                <thead>
+                    <tr style="color: blueviolet;">
+                        <th>Doctor Name</th>
+                        <th>Specialty</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><h2>Dr. Alice Johnson</h2></td>
+                        <td>Cardiologist</td>
+                        <td>America</td>
+                    </tr>
+                    <tr>
+                        <td><h2>Dr. Robert Smith</h2></td>
+                        <td>Neurologist</td>
+                        <td>USA</td>
+                    </tr>
+                    <tr>
+                        <td><h2>Dr. Emily Davis</h2></td>
+                        <td>Orthopedic Surgeon</td>
+                        <td>London</td>
+                    </tr>
+                    <tr>
+                        <td><h2>Dr. Michael Brown</h2></td>
+                        <td>General Practitioner</td>
+                        <td>Canada</td>
+                    </tr>
+                    <tr>
+                        <td><h2>Dr. Daniel Lee</h2></td>
+                        <td>Dermatologist</td>
+                        <td>Africa</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+{% endblock %}

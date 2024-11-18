@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center; color: blueviolet;">Register Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value|default:'' }}"/>
+            <span class="text-danger">{% for error in form.name.errors %}{{ error }} {% endfor %}</span>
+        </div>
+        <div class="mb-3">
+            <label for="uname">Username</label>
+            <input type="text" class="form-control" id="uname" name="username" value="{{ form.username.value|default:'' }}"/>
+            <span class="text-danger">{% for error in form.username.errors %}{{ error }} {% endfor %}</span>
+        </div>
+        <div class="mb-3">
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" id="pwd" name="password" value="{{ form.password.value|default:'' }}"/>
+            <span class="text-danger">{% for error in form.password.errors %}{{ error }} {% endfor %}</span>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mb-3 d-flex justify-content-center">
+        <a href="{% url 'homepage' %}" class="btn btn-primary mx-2">Home</a>
+    </div>
+    <div class="container-fluid">
+        <h1 style="text-align:center;color: darkcyan;">Appointment Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="color: brown;">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Problem</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient.id }}</td>
+                        <td>{{ patient.name }}</td>
+                        <td>{{ patient.age }}</td>
+                        <td>{{ patient.gender }}</td>
+                        <td>{{ patient.contact }}</td>
+                        <td>{{ patient.address }}</td>
+                        <td>
+                            <label for="problem_{{ patient.id }}">Problem</label>
+                            <input type="text" name="problem_{{ patient.id }}" id="problem_{{ patient.id }}" class="form-control" placeholder="Enter problem" />
+                            <!-- Remove unnecessary error handling for this example -->
+                        </td>
+                        <td>
+                            <label for="doctor_{{ patient.id }}">Choose a Doctor:</label>
+                            <select name="doctor_{{ patient.id }}" id="doctor_{{ patient.id }}" class="form-control">
+                                <option value="Dr. Alice Johnson">Dr. Alice Johnson</option>
+                                <option value="Dr. Robert Smith">Dr. Robert Smith</option>
+                                <option value="Dr. Emily Davis">Dr. Emily Davis</option>
+                                <option value="Dr. Michael Brown">Dr. Michael Brown</option>
+                                <option value="Dr. Daniel Lee">Dr. Daniel Lee</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label for="date_{{ patient.id }}">Date</label>
+                            <input type="date" name="date_{{ patient.id }}" id="date_{{ patient.id }}" class="form-control" />
+                            <!-- Remove unnecessary error handling for this example -->
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+{% endblock %}
